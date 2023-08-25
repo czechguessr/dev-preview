@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
+        crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"
+        integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="../style/main.css">
+
+
+    <script src="https://api.mapy.cz/loader.js"></script>
+    <script>Loader.load(null, {})</script>
+
+    <script src="../script/selectMap.js"></script>
+    <script src="../script/GLOBAL.js"></script>
+    <script src="../script/Map.js"></script>
+
+    <title>CzechGuessr - Select map</title>
+</head>
+
+<body onload="CzechGuessr.SelectMap.bodyOnLoad()">
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container-fluid"> <a class="navbar-brand" href="/"><img src="../img/logo.svg" alt="CzechGuessr Logo"
+                    height="40rem"></a> </div>
+    </nav>
+    <div class="content main-bg">
+        <h1><span class="bold">Czech</span>Guessr</h1>
+        <div class="input-group mb-3">
+            <input type="text" id="folder-path" class="form-control" placeholder="CzechGuessr folder path"
+                onkeyup="CzechGuessr.SelectMap.check()">
+            <span class="input-group-text text-danger" id="folder-state"><i class="bi bi-x-circle-fill"></i>&nbsp;Not
+                found</span>
+        </div>
+        <div class="input-group">
+            <select title="Map" class="form-select" id="map" disabled>
+                <option value="" disabled selected>Select map...</option>
+            </select>
+            <button class="btn btn-primary" onclick="CzechGuessr.SelectMap.ok()" id="play-form-btn" disabled>OK</button>
+        </div>
+        <span>or</span>
+        <label for="map-file" class="btn btn-light">Select map file</label>
+        <input type="file" id="map-file" style="display: none;" accept="application/json"
+            onchange="CzechGuessr.SelectMap.fileSelected();">
+    </div>
+
+    <span id="ver"></span>
+    <script type="module">
+        $("#ver").text(`Version: ${CzechGuessr.GLOBAL.APP_VERSION}`);
+    </script>
+</body>
+
+</html>

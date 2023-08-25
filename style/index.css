@@ -1,0 +1,9 @@
+.header {
+    height: 40vh;
+}
+
+.play-btn {
+    position: fixed;
+    bottom: 5px;
+    right: 5px;
+}
